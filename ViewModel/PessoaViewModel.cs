@@ -12,20 +12,16 @@ namespace treino_notify.ViewModel
     public class PessoaViewModel : INotifyPropertyChanged
     {
         public event PropertyChangedEventHandler PropertyChanged;
-        //private void OnPropertyChanged(string nomePropriedade)
-        //{
-        //    PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(nomePropriedade));
-        //}
-        private void OnPropertyChanged(object sender, string nomePropriedade)
+        private void OnPropertyChanged(string nomePropriedade)
         {
-            if (this.PropertyChanged != null)
-            {
-                PropertyChanged(sender, new PropertyChangedEventArgs(nomePropriedade));
-            }
+            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(nomePropriedade));
         }
 
         public ObservableCollection<PessoaModel> Pessoa { get; set; }
+
         public List<PessoaModel> PessoaNotify { get; set; }
+
+          
 
 
         public string Nome { get; set; }
@@ -53,11 +49,10 @@ namespace treino_notify.ViewModel
 
         }
 
-
         public void AlteraNome(object objRelayCommand)
         {
             Nome = "Maria";
-            OnPropertyChanged(this,"Nome");
+            OnPropertyChanged("Nome");
         }
         public void CreatePessoa(object objRelayCommand)
         {
@@ -66,8 +61,9 @@ namespace treino_notify.ViewModel
         public void CreatePessoaNotify(object objRelayCommand)
         {
             PessoaNotify.Add(new PessoaModel("Maria", 456));
-            OnPropertyChanged(this,"Nome");
-            OnPropertyChanged(this,"Cpf");
+            PessoaNotify = new List<PessoaModel>(PessoaNotify);
+            OnPropertyChanged("PessoaNotify");
+            
         }
     }
 }

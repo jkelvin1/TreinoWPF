@@ -11,7 +11,7 @@
             <Button Margin="30,150,30,0" Command="{Binding CreatePessoaCommand}">Adicionar ao Observable</Button>
             <Button Margin="30,10,30,0" Command="{Binding CreatePessoaNotifyCommand}">Adicionar ao INotify</Button>
             <Button Margin="30,10,30,0" Command="{Binding AlteraNomeCommand}">Mudar String</Button>
-            <TextBlock Margin="0,50,0,0" HorizontalAlignment="Center" Text="{Binding Nome}"/>
+            <Label Margin="0,50,0,0" HorizontalAlignment="Center" Content="{Binding Nome}"/>
         </StackPanel>
         <StackPanel Width="250" HorizontalAlignment="Center">
             <Label Content=" Lista com Observable"/>
@@ -29,8 +29,8 @@
             <ListView x:Name="lstPessoaNotify" ItemsSource="{Binding PessoaNotify}">
                 <ListView.View>
                     <GridView>
-                        <GridViewColumn Header="Nome" DisplayMemberBinding="{Binding Sigla}"/>
-                        <GridViewColumn Header="CPF" DisplayMemberBinding="{Binding Nome}"/>
+                        <GridViewColumn Header="Nome" DisplayMemberBinding="{Binding Nome}"/>
+                        <GridViewColumn Header="CPF" DisplayMemberBinding="{Binding Cpf}"/>
                     </GridView>
                 </ListView.View>
             </ListView>
